@@ -1,0 +1,12 @@
+### 测试发布活动
+POST http://localhost:8080/api/activities
+Content-Type: application/json
+
+{
+  "id": "",
+  "title": "街舞社快闪活动",
+  "location": "北区广场",
+  "capacity": 50,
+  "deadline": "2026-11-30",
+  "status": ""
+}
