@@ -1,6 +1,5 @@
 package com.example
 
-import com.example.database.ActivityRepository
 import com.example.models.Activity
 import io.ktor.server.application.*
 import io.ktor.server.request.* // 必须加这个，用来接收数据
@@ -17,7 +16,7 @@ fun Application.configureRouting(){
 
         // 1. 获取列表
         get("/api/activities") {
-            val publishedActivities = ActivityRepository.getAllActivities().filter{it.status == "PUBLISHED"}
+            val publishedActivities = Database.getAllActivities().filter{it.status == "PUBLISHED"}
             call.respond(publishedActivities)
         }
 
@@ -28,7 +27,7 @@ fun Application.configureRouting(){
                 id = UUID.randomUUID().toString(), // 自动生成随机 ID
                 status = "PENDING" // 强制设为待审核
             )
-            ActivityRepository.saveActivity(activityToSave)
+            Database.saveActivity(activityToSave)
             call.respond(io.ktor.http.HttpStatusCode.Created, mapOf("message" to "Activity created successfully"))
         }
     }
