@@ -1,6 +1,6 @@
 package com.example
 
-import com.example.com.example.rootModule
+import com.example.rootModule
 import io.ktor.client.request.get
 import io.ktor.http.HttpStatusCode
 import io.ktor.server.testing.testApplication
